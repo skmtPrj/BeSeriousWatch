@@ -1,0 +1,2 @@
+content BeSeriousWatch content/
+overlay chrome://browser/content/browser.xul chrome://BeSeriousWatch/content/beSeriousWatch.xul
