@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>skmtPrj@sakamoto.jp</em:id>
+    <em:type>2</em:type>
+    <em:name>Be-Serious Watch</em:name>
+    <em:version>0.1</em:version>
+    <em:description>I WILL BE SERIOUS STARTING TOMORROW!</em:description>
+    <em:creator>SkmT</em:creator>
+    
+    <em:targetApplication>
+      <Description>
+        <em:id>{4a08e8f0-2660-11e2-81c1-0800200c9a66}</em:id>
+        <em:minVersion>16.0.2</em:minVersion>
+        <em:maxVersion>16.0.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    
+  </Description>
+</RDF>
