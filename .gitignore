@@ -161,3 +161,11 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+
+#############
+## Firefox
+#############
+
+# File path for add-on project
+/skmtPrj@sakamoto.jp
