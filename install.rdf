@@ -7,7 +7,7 @@
     <em:id>skmtPrj@sakamoto.jp</em:id>
     <em:version>0.1.0</em:version>
     <em:type>2</em:type>
-		<em:iconURL></em:iconURL>		
+    <em:iconURL></em:iconURL>		
 
     <em:targetApplication>
       <Description>
@@ -20,7 +20,7 @@
     <em:name>Be-Serious Watch</em:name>
     <em:description>I WILL BE SERIOUS STARTING TOMORROW!</em:description>
     <em:creator>SkmT</em:creator>
-		<em:homepageURL></em:homepageURL>
+    <em:homepageURL></em:homepageURL>
 
   </Description>
 </RDF>
