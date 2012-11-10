@@ -1,2 +1,3 @@
 content BeSeriousWatch content/
+skin BeSeriousWatch img skin/
 overlay chrome://browser/content/browser.xul chrome://BeSeriousWatch/content/beSeriousWatch.xul
