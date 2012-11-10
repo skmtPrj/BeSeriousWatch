@@ -1,14 +1,20 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://BeSeriousWatch/content/popup.css" type="text/css"?>
 
 <overlay 
    id="bsw" 
    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script 
+     type="application/x-javascript" 
+     src="chrome://BeSeriousWatch/content/popup.js" />  
   <statusbar id="status-bar">
     <statusbarpanel
        class="statusbarpanel-menu-iconic"
-       id="bswButton" 
-       src="chrome://BeSeriousWatch/skin/bswLabel.png" />
+       id="bswLabel" 
+       src="chrome://BeSeriousWatch/skin/bswLabel.png"
+       onmousedown='popup.onClickStatusbarIcon()' />
+    <popupset id="bswPopupSet"></popupset>
   </statusbar>
 </overlay>
 
