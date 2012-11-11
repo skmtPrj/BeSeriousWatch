@@ -5,7 +5,8 @@
     border-radius: 5px;
     height: 100px;
     width: 100px;
-}
+    opacity: 0.5
+}  
 
 #bswPanel
 {
@@ -13,4 +14,14 @@
     border: 0px solid #FFFFFF;
 }
 
+.bswPopupTimeLabel 
+{   
+    -moz-binding: url('chrome://BeSeriousWatch/content/bindings.xml#bswPopupTimeLabel');
+    margin: 0px;
+    padding: 0px;  
+}
 
+#timeLabel
+{
+   color: #FFFFFF;
+}
