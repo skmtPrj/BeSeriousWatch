@@ -30,18 +30,34 @@ var popup = {
      */
     onClickStatusbarIcon: function(){  
         // ウィンドウ表示済み
-        if(this.isOpen != true)
+        if(this.open != true)
             {
                 var icon = document.getElementById("status-bar");     // xul側  
+                this._panel.style.opacity = 0;
                 this._panel.openPopup(icon, "before_end", 0, 0, false, false);
+                this.fadeIn(0);
             }
         else
             {  
                 this._panel.hidePopup();  
-            }  
+            }
         
         // ウィンドウの表示状態を更新
-        this.isOpen = !(this.isOpen);
+        this.open = !(this.open);
+    },
+    
+    fadeIn: function(lastOp){
+        if (lastOp < 1){
+            duration = 300;
+            dt = 10;
+            lastOp += dt / duration;
+            this.setOpacity(lastOp);
+            setTimeout("popup.fadeIn("+lastOp+")", dt);
+        }
+    },
+    
+    setOpacity: function(level){
+        this._panel.style.opacity = level;
     },
 
     /**
