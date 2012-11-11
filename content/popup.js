@@ -62,8 +62,8 @@ var popup = {
     },
     
     /**
-     * パネルのフェードイン
-     * @param: 目標透過度
+     * パネルのフェードイン前処理
+     * @param: endOpacity 目標透過度
      * @return: なし
      */
     fadeIn: function(endOpacity)
@@ -84,6 +84,14 @@ var popup = {
         this.setOpacity(0, endOpacity, incOpacity, dt);
     },
     
+    /**
+     * パネルのフェードイン実処理
+     * @param: curOpacity 現在透過度
+     * @param: endOpacity 目標透過度
+     * @param: incOpacity 透過度増加分
+     * @param: dt 時間刻み幅
+     * @return: なし
+     */
     setOpacity: function(curOpacity, endOpacity, incOpacity, dt)
     { 
         if (curOpacity < endOpacity)
