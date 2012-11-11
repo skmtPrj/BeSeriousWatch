@@ -30,28 +30,54 @@ var popup = {
      */
     onClickStatusbarIcon: function()
     {  
-        // ウィンドウ表示済み
+        // ウィンドウ未表示
         if(this.open != true)
             {
                 // 時刻表示用ラベルを生成
                 this._popup.appendChild(this.CreateTimeLabel());
-
+                // ポップアップウィンドウを表示
                 var icon = document.getElementById("status-bar");
                 this._panel.openPopup(icon, "before_end", 0, 0, false, false);
-
-                this.SetCurrentTime();
-                this.SetTimeImage();
+                // 時刻文字列&画像を生成
+                this.CreateCurrentTimeLabel();
+                this.CreateTimeImage();
+                // タイマーイベントのセット
+                var popupObj = this;
+                timerId = window.setInterval(function(){popupObj.UpdatePopupElements();}, 1000);
             }
         else
             {  
+                // ポップアップウィンドウを非表示にする
                 this._panel.hidePopup();  
-
                 // 時刻表示用ラベルを破棄
-                this.DestroyAppendElement(this._popup);
+                this.DeleteAppendElement(this._popup);
+                // タイマーイベントをクリア
+                window.clearInterval(timerId);
             }  
         
         // ウィンドウの表示状態を更新
         this.open = !(this.open);
+    },
+
+
+    /**
+     * 動的に追加されたエレメントの削除
+     * @param: なし
+     * @return: なし
+     */
+    DeleteAppendElement: function(elem)
+    {
+        // 時間ラベルの削除
+        this.DeleteCurrentTimeLabel();
+
+        // 時間画像の削除
+        this.DeleteTimeImage();
+
+        // ポップアップウィンドウの削除
+        while(elem.firstChild)
+            {
+                elem.removeChild(elem.firstChild);
+            }
     },
 
     /**
@@ -67,50 +93,63 @@ var popup = {
     },
 
     /**
-     * 動的に追加されたエレメントの削除
-     * @param: なし
-     * @return: なし
-     */
-    DestroyAppendElement: function(elem)
-    {
-        // 時間ラベルの削除
-        var timeLabelElm = document.getElementById("timeLabel");
-        delete timeLabelElm.value;
-
-        // 時間画像の削除
-        var timeImageElm = document.getElementById("timeImage");
-        delete timeImageElm.value;
-
-        // ポップアップウィンドウの削除
-        while(elem.firstChild)
-            {
-                elem.removeChild(elem.firstChild);
-            }
-    },
-
-    /**
      * 現在時刻を取得し、ラベルに貼付ける
      * @param: なし
      * @return: なし
      */
-    SetCurrentTime: function()
+    CreateCurrentTimeLabel: function()
     {
         var timeLabelElm = document.getElementById("timeLabel");
-        delete timeLabelElm.value;
         timeLabelElm.value = new Date().toLocaleTimeString();
     },
 
+    /**
+     * ポップアップウィンドウ内の時刻表示ラベルの文字列更新
+     * @note: 1秒間隔で更新の有無を確認する
+     * @param: なし
+     * @return: なし
+     */
+    UpdatePopupElements: function()
+    {
+        // TODO: 時刻文字列更新が必要かどうかの確認処理実装
+        var timeLabelElm = document.getElementById("timeLabel");
+
+        // 時刻文字列更新が必要だった場合
+        timeLabelElm.value = new Date().toLocaleTimeString();
+    },
+
+    /**
+     * ポップアップウィンドウ内の時刻表示ラベルの削除
+     * @param: なし
+     * @return: なし
+     */
+    DeleteCurrentTimeLabel: function()
+    {
+        var timeLabelElm = document.getElementById("timeLabel");
+        delete timeLabelElm.value;
+    },
 
     /**
      * 現在時刻を取得し、ラベルに貼付ける
      * @param: なし
      * @return: なし
      */
-    SetTimeImage: function()
+    CreateTimeImage: function()
     {
         var timeImageElm = document.getElementById("timeImage");
         delete timeImageElm.value;
         timeImageElm.src = "chrome://BeSeriousWatch/skin/bswLabel.png";
+    },
+
+    /**
+     * ポップアップウィンドウ内の画像の削除
+     * @param: なし
+     * @return: なし
+     */
+    DeleteTimeImage: function()
+    {
+        var timeImageElm = document.getElementById("timeImage");
+        delete timeImageElm.value;
     }
 };
 
