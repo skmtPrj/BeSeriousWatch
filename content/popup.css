@@ -1,27 +1,52 @@
 .bswPopup
 {   
-    background: #000000;
+    background: rgba(0, 0, 0, 0.75);
     border: 0px solid #FFFFFF;
     border-radius: 5px;
-    height: 100px;
-    width: 100px;
-    opacity: 0.5
+    height: 200px;
+    width: 200px;
 }  
 
 #bswPanel
 {
-    background: transparent;
     border: 0px solid #FFFFFF;
 }
 
-.bswPopupTimeLabel 
-{   
+.bswPopupTimeLabel
+{
     -moz-binding: url('chrome://BeSeriousWatch/content/bindings.xml#bswPopupTimeLabel');
-    margin: 0px;
-    padding: 0px;  
 }
 
 #timeLabel
 {
    color: #FFFFFF;
+   width: 180px;
+   height: 30px;
+   font-size: 30px;
+   text-align: center;
+   vertical-align: middle;
+}
+
+#timeImage
+{
+    position: relative;
+    top: 0px;
+    left: 10px;
+    width: 180px;
+    height: 150px
+}
+
+#timeStr
+{
+    position: relative;
+    left: 4px;
+    top: -45px;
+    margin-bottom: -45px;
+    text-align: left;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.8);
+    width: 180px;
+    height: 40px;
+    font-size: 15px;
+    padding-left: 10px;
 }

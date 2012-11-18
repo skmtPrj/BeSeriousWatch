@@ -5,12 +5,13 @@
    xmlns:xbl="http://www.mozilla.org/xbl"  
    xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">  
   
-  <binding id="bswPopupTimeLabel">  
+  <binding id="bswPopupTimeLabel">
     <content>
-      <hbox>
-        <xul:label id="timeLabel" />
+      <xul:label id="timeLabel" />
+      <html:div>
         <xul:image id="timeImage" />
-      </hbox>
+        <xul:label id="timeStr" />
+      </html:div>
     </content>
   </binding>
-</bindings> 
+</bindings>

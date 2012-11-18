@@ -1,3 +1,8 @@
+var images;
+var timeStrings;
+var timerId;
+var printedTime;
+
 var popup = {
     /**
      * ブラウザ起動時にパネルを生成
@@ -11,7 +16,7 @@ var popup = {
         this._panel.setAttribute("noautofocus", "true");
         this._panel.setAttribute("noautohide", "true");
         this._panel.id = "bswPanel";
-
+        this.open = false;
         // 生成したパネルをXULのpopupsetに追加
         var popupset = document.getElementById("bswPopupSet");  
         popupset.appendChild(this._panel);  
@@ -21,6 +26,38 @@ var popup = {
         this._popup.className = "bswPopup";  
         this._popup.text = "";  
         this._panel.appendChild(this._popup); 
+
+        // 表示する文字列と画像パスを格納
+        images = new Array(24);
+        for(var i = 0; i < images.length; ++i)
+            {
+                images[i] = "chrome://BeSeriousWatch/skin/" + i + ".png";
+            }
+        timeStrings = new Array(24);
+        timeStrings[0] = "0時です";
+        timeStrings[1] = "1時です";
+        timeStrings[2] = "2時です";
+        timeStrings[3] = "3時です";
+        timeStrings[4] = "4時です";
+        timeStrings[5] = "5時です";
+        timeStrings[6] = "6時です";
+        timeStrings[7] = "7時です";
+        timeStrings[8] = "8時です";
+        timeStrings[9] = "9時です";
+        timeStrings[10] = "10時です";
+        timeStrings[11] = "11時です";
+        timeStrings[12] = "12時です";
+        timeStrings[13] = "13時です";
+        timeStrings[14] = "14時です";
+        timeStrings[15] = "15時です";
+        timeStrings[16] = "16時です";
+        timeStrings[17] = "17時です";
+        timeStrings[18] = "18時です";
+        timeStrings[19] = "19時です";
+        timeStrings[20] = "20時です";
+        timeStrings[21] = "21時です";
+        timeStrings[22] = "22時です";
+        timeStrings[23] = "23時です";
     },
 
     /**
@@ -41,8 +78,10 @@ var popup = {
                 // フェードイン
                 this.fadeIn(1);
                 // 時刻文字列&画像を生成
+                printedTime = new Date();
                 this.CreateCurrentTimeLabel();
                 this.CreateTimeImage();
+                this.CreateTimeString();
                 // タイマーイベントのセット
                 var popupObj = this;
                 timerId = window.setInterval(function(){popupObj.UpdatePopupElements();}, 1000);
@@ -116,10 +155,10 @@ var popup = {
     {
         // 時間ラベルの削除
         this.DeleteCurrentTimeLabel();
-
         // 時間画像の削除
         this.DeleteTimeImage();
-
+        // 時刻文字列の削除
+        this.DeleteTimeString();
         // ポップアップウィンドウの削除
         while(elem.firstChild)
             {
@@ -128,7 +167,7 @@ var popup = {
     },
 
     /**
-     * 時刻を表示するラベルを生成する
+     * 時刻/画像/時刻文字列を表示するラベルを生成する
      * @param: なし
      * @return: ラベルエレメント
      */
@@ -147,7 +186,8 @@ var popup = {
     CreateCurrentTimeLabel: function()
     {
         var timeLabelElm = document.getElementById("timeLabel");
-        timeLabelElm.value = new Date().toLocaleTimeString();
+        // 文字列生成
+        timeLabelElm.value = this.GetTimeString();
     },
 
     /**
@@ -158,11 +198,18 @@ var popup = {
      */
     UpdatePopupElements: function()
     {
-        // TODO: 時刻文字列更新が必要かどうかの確認処理実装
-        var timeLabelElm = document.getElementById("timeLabel");
-
-        // 時刻文字列更新が必要だった場合
-        timeLabelElm.value = new Date().toLocaleTimeString();
+        // 現在表示中の時刻を取得
+        var oldHour = printedTime.getHours();
+        // 表示時刻の更新
+        printedTime = new Date();
+        // 時刻は1秒ごとに更新
+        this.CreateCurrentTimeLabel();
+        // 時刻が変わったとき
+        if(oldHour != printedTime.getHours())
+            {
+                this.CreateTimeImage();
+                this.CreateTimeString();
+            }
     },
 
     /**
@@ -184,8 +231,7 @@ var popup = {
     CreateTimeImage: function()
     {
         var timeImageElm = document.getElementById("timeImage");
-        delete timeImageElm.value;
-        timeImageElm.src = "chrome://BeSeriousWatch/skin/bswLabel.png";
+        timeImageElm.src = images[printedTime.getHours()];
     },
 
     /**
@@ -196,8 +242,45 @@ var popup = {
     DeleteTimeImage: function()
     {
         var timeImageElm = document.getElementById("timeImage");
-        delete timeImageElm.value;
-    }
+        delete timeImageElm.src;
+    },
+
+    /**
+     * printedTimeに格納されている時刻をhh:mm:ss形式で文字列化する
+     * @param: なし
+     * @return: hh:mm:ss形式の時刻
+     */
+    GetTimeString: function()
+    {
+        // hh:mm:ss形式で時刻表示
+        return (("00" + printedTime.getHours()).slice(-2) + 
+                ":" +
+                ("00" + printedTime.getMinutes()).slice(-2) + 
+                ":" +
+                ("00" + printedTime.getSeconds()).slice(-2));
+    },
+
+    /**
+     * 現在時刻を取得し、時刻文字列を生成する
+     * @param: なし
+     * @return: なし
+     */
+    CreateTimeString: function()
+    {
+        var timeStringElm = document.getElementById("timeStr");
+        timeStringElm.value = timeStrings[printedTime.getHours()];
+    },
+
+    /**
+     * ポップアップウィンドウ内の時刻文字列の削除
+     * @param: なし
+     * @return: なし
+     */
+    DeleteTimeString: function()
+    {
+        var timeStringElm = document.getElementById("timeStr");
+        delete timeStringElm.value;
+    },
 };
 
 // Windowロード時にラベルを生成するイベントを追加
