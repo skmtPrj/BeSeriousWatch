@@ -10,7 +10,8 @@
       <xul:label id="timeLabel" />
       <html:div>
         <xul:image id="timeImage" />
-        <xul:label id="timeStr" />
+        <xul:label id="timeStrLine1" />
+        <xul:label id="timeStrLine2" />
       </html:div>
     </content>
   </binding>

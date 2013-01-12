@@ -33,31 +33,56 @@ var popup = {
             {
                 images[i] = "chrome://BeSeriousWatch/skin/" + i + ".png";
             }
-        timeStrings = new Array(24);
-        timeStrings[0] = "0時です";
-        timeStrings[1] = "1時です";
-        timeStrings[2] = "2時です";
-        timeStrings[3] = "3時です";
-        timeStrings[4] = "4時です";
-        timeStrings[5] = "5時です";
-        timeStrings[6] = "6時です";
-        timeStrings[7] = "7時です";
-        timeStrings[8] = "8時です";
-        timeStrings[9] = "9時です";
-        timeStrings[10] = "10時です";
-        timeStrings[11] = "11時です";
-        timeStrings[12] = "12時です";
-        timeStrings[13] = "13時です";
-        timeStrings[14] = "14時です";
-        timeStrings[15] = "15時です";
-        timeStrings[16] = "16時です";
-        timeStrings[17] = "17時です";
-        timeStrings[18] = "18時です";
-        timeStrings[19] = "19時です";
-        timeStrings[20] = "20時です";
-        timeStrings[21] = "21時です";
-        timeStrings[22] = "22時です";
-        timeStrings[23] = "23時です";
+        timeStringsLine1 = new Array(24);
+        timeStringsLine2 = new Array(24);
+        timeStringsLine1[0] = "0時です";
+        timeStringsLine2[0] = "0時です";
+        timeStringsLine1[1] = "1時です";
+        timeStringsLine2[1] = "1時です";
+        timeStringsLine1[2] = "2時です";
+        timeStringsLine2[2] = "2時です";
+        timeStringsLine1[3] = "3時です";
+        timeStringsLine2[3] = "3時です";
+        timeStringsLine1[4] = "4時です";
+        timeStringsLine2[4] = "4時です";
+        timeStringsLine1[5] = "5時です";
+        timeStringsLine2[5] = "5時です";
+        timeStringsLine1[6] = "6時です";
+        timeStringsLine2[6] = "6時です";
+        timeStringsLine1[7] = "7時です";
+        timeStringsLine2[7] = "7時です";
+        timeStringsLine1[8] = "8時です";
+        timeStringsLine2[8] = "8時です";
+        timeStringsLine1[9] = "9時です";
+        timeStringsLine2[9] = "9時です";
+        timeStringsLine1[10] = "10時です";
+        timeStringsLine2[10] = "10時です";
+        timeStringsLine1[11] = "11時です";
+        timeStringsLine2[11] = "11時です";
+        timeStringsLine1[12] = "12時です";
+        timeStringsLine2[12] = "12時です";
+        timeStringsLine1[13] = "13時です";
+        timeStringsLine2[13] = "13時です";
+        timeStringsLine1[14] = "14時です";
+        timeStringsLine2[14] = "14時です";
+        timeStringsLine1[15] = "15時です";
+        timeStringsLine2[15] = "15時です";
+        timeStringsLine1[16] = "16時です";
+        timeStringsLine2[16] = "16時です";
+        timeStringsLine1[17] = "17時です";
+        timeStringsLine2[17] = "17時です";
+        timeStringsLine1[18] = "18時です";
+        timeStringsLine2[18] = "18時です";
+        timeStringsLine1[19] = "19時です";
+        timeStringsLine2[19] = "19時です";
+        timeStringsLine1[20] = "20時です";
+        timeStringsLine2[20] = "20時です";
+        timeStringsLine1[21] = "21時です";
+        timeStringsLine2[21] = "21時です";
+        timeStringsLine1[22] = "22時です";
+        timeStringsLine2[22] = "22時です";
+        timeStringsLine1[23] = "23時です";
+        timeStringsLine2[23] = "23時です";
     },
 
     /**
@@ -267,8 +292,10 @@ var popup = {
      */
     CreateTimeString: function()
     {
-        var timeStringElm = document.getElementById("timeStr");
-        timeStringElm.value = timeStrings[printedTime.getHours()];
+        var timeStringElm1 = document.getElementById("timeStrLine1");
+        var timeStringElm2 = document.getElementById("timeStrLine2");
+        timeStringElm1.value = timeStringsLine1[printedTime.getHours()];
+        timeStringElm2.value = timeStringsLine2[printedTime.getHours()];
     },
 
     /**
@@ -278,8 +305,10 @@ var popup = {
      */
     DeleteTimeString: function()
     {
-        var timeStringElm = document.getElementById("timeStr");
-        delete timeStringElm.value;
+        var timeStringElm1 = document.getElementById("timeStrLine1");
+        var timeStringElm2 = document.getElementById("timeStrLine2");
+        delete timeStringElm1.value;
+        delete timeStringElm2.value;
     },
 };
 

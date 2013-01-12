@@ -36,7 +36,7 @@
     height: 150px
 }
 
-#timeStr
+#timeStrLine1
 {
     position: relative;
     left: 4px;
@@ -44,9 +44,24 @@
     margin-bottom: -45px;
     text-align: left;
     color: #FFFFFF;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.5);
     width: 180px;
-    height: 40px;
+    height: 20px;
     font-size: 15px;
     padding-left: 10px;
-}
+ }
+
+#timeStrLine2
+{
+    position: relative;
+    left: 4px;
+    top: -45px;
+    margin-bottom: -45px;
+    text-align: left;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    width: 180px;
+    height: 20px;
+    font-size: 15px;
+    padding-left: 10px;
+ }
