@@ -8,8 +8,7 @@
   <binding id="bswPopupTimeLabel">
     <content>
       <xul:label id="timeLabel" />
-      <html:div>
-        <xul:image id="timeImage" />
+      <html:div id="timeStrContainer">
         <xul:label id="timeStrLine1" />
         <xul:label id="timeStrLine2" />
       </html:div>

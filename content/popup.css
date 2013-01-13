@@ -24,23 +24,12 @@
    height: 30px;
    font-size: 30px;
    text-align: center;
-   vertical-align: middle;
-}
-
-#timeImage
-{
-    position: relative;
-    top: 0px;
-    left: 10px;
-    width: 180px;
-    height: 150px;
-    vertical-align: bottom;
 }
 
 #timeStrLine1
 {
     position: relative;
-    left: 4px;
+    top: 110px;
     text-align: left;
     color: #FFFFFF;
     background: rgba(0, 0, 0, 0.5);
@@ -48,15 +37,14 @@
     height: 20px;
     font-size: 12px;
     padding-left: 10px;
-    margin-top: 0px;
-    margin-bottom: 0px;
     vertical-align: bottom;
+    margin: 0px;
  }
 
 #timeStrLine2
-{
+{   
     position: relative;
-    left: 4px;
+    top: 110px;
     text-align: left;
     color: #FFFFFF;
     background: rgba(0, 0, 0, 0.5);
@@ -67,4 +55,15 @@
     margin-top: 0px;
     margin-bottom: 0px;
     vertical-align: bottom;
+    margin: 0px;
+ }
+ 
+#timeStrContainer
+ {
+    padding: 0px;
+    width: 180px;
+    height: 150px;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+    margin-right: 10px;
  }
