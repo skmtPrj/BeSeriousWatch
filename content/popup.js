@@ -181,7 +181,7 @@ var popup = {
         // 時間ラベルの削除
         this.DeleteCurrentTimeLabel();
         // 時間画像の削除
-        this.DeleteTimeImage();
+        // this.DeleteTimeImage();
         // 時刻文字列の削除
         this.DeleteTimeString();
         // ポップアップウィンドウの削除
@@ -255,8 +255,8 @@ var popup = {
      */
     CreateTimeImage: function()
     {
-        var timeImageElm = document.getElementById("timeImage");
-        timeImageElm.src = images[printedTime.getHours()];
+        var timeImageDiv = document.getElementById("timeStrContainer");
+        timeImageDiv.style.backgroundImage = "url(" + images[printedTime.getHours()] + ")";
     },
 
     /**
